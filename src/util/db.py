@@ -7,8 +7,6 @@ def connectDatabase():
 
 def dbSeeder():
     con, cur = connectDatabase()
-    cur.execute("PRAGMA foreign_keys = ON;")
-    con.commit()
     cur.execute(
         '''
         CREATE TABLE IF NOT EXISTS Users (
@@ -27,11 +25,23 @@ def dbSeeder():
         ''')
     con.commit()
     cur.execute(
-        ''' CREATE TABLE IF NOT EXISTS Asignatura (
+        ''' CREATE TABLE IF NOT EXISTS Asignaturas (
                 nombre TEXT NOT NULL,
                 profesorId TEXT NOT NULL,
                 CONSTRAINT NewTable_PK PRIMARY KEY (nombre),
                 FOREIGN KEY (profesorId) REFERENCES Users(id)
+            );
+        ''')
+    con.commit()
+    cur.execute(
+        ''' CREATE TABLE IF NOT EXISTS Notas (
+                id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                valor REAL NOT NULL,
+                asignaturaNombre TEXT NOT NULL,
+                estudianteId TEXT NOT NULL,
+                porcentaje REAL NOT NULL,
+                FOREIGN KEY (asignaturaNombre) REFERENCES Asignaturas(nombre)
+                FOREIGN KEY (estudianteId) REFERENCES Users(id)
             );
         ''')
     con.commit()
