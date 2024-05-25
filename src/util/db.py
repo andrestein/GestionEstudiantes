@@ -2,6 +2,7 @@ import sqlite3
 
 def connectDatabase():
     con = sqlite3.connect("gestion-estudiantes.db")
+    con.row_factory = sqlite3.Row
     cur = con.cursor()
     return con,cur
 
