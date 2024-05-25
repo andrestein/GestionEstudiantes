@@ -49,7 +49,7 @@ def checkUsuario(userName, password):
     try:
         con,cur = connectDatabase()
         rowData = cur.execute(f''' select * from users where userName='{userName}' AND password='{password}';''')
-        tipo = "administrador"
+        tipo = None
         user = None
         for data in rowData:
             tipo = data["tipo"]
@@ -61,7 +61,7 @@ def checkUsuario(userName, password):
         return tipo,user
     except:
         print("Ups, ah ocurrido un error")
-        return None, None    
+        return None, None
 
 def consultarUsuario(id):
     try:
