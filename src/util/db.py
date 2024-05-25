@@ -46,3 +46,12 @@ def dbSeeder():
             );
         ''')
     con.commit()
+    try:
+        cur.execute(
+            ''' 
+            INSERT INTO Users (id,password,userName,nombre,edad,genero,direccion,cellphone,email,tipo) VALUES
+            ('123','pass','andres','andres','24','Masculino','test','3015595423','andres.granda@gmail.com','administrador')
+            ''')
+        con.commit()
+    except:
+        print("Seeder update")

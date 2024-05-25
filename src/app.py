@@ -6,7 +6,6 @@ from src.util.db import dbSeeder
 from src.classess.Usuario import Usuario
 
 def gestionEstudiantes():
-    print("start application")
     dbSeeder()
     login()
     #admin = Administrador("andres","123","pass","andres","24","Masculino","test","3015595423","andres.granda@gmail.com")
