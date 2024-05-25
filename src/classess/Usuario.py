@@ -43,7 +43,26 @@ class Usuario:
         except:
             print("Ups, ah ocurrido un error")
             return None
-    
+
+
+def checkUsuario(userName, password):
+    try:
+        con,cur = connectDatabase()
+        rowData = cur.execute(f''' select * from users where userName='{userName}' AND password='{password}';''')
+        tipo = "administrador"
+        user = None
+        for data in rowData:
+            tipo = data["tipo"]
+            user = Usuario(data["userName"],data["id"],
+                data["password"],data["nombre"],
+                data["edad"],data["genero"],data["direccion"],
+                data["cellphone"],data["email"])
+        con.commit()
+        return tipo,user
+    except:
+        print("Ups, ah ocurrido un error")
+        return None, None    
+
 def consultarUsuario(id):
     try:
         con,cur = connectDatabase()

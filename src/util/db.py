@@ -21,7 +21,7 @@ def dbSeeder():
             cellphone TEXT NOT NULL,
             email TEXT NOT NULL,
             tipo TEXT NOT NULL,
-            CONSTRAINT Users_PK PRIMARY KEY (id)
+            CONSTRAINT Users_PK PRIMARY KEY (id,userName)
         );
         ''')
     con.commit()
