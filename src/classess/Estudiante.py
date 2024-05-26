@@ -7,6 +7,8 @@ class Estudiante(Usuario):
         self.agregarAsignatura(asignatura)
     def agregarAsignatura(self,value):
         self._asignatura = value
+    def __dir__(self):
+        return["userName", "id", "password", "nombre", "edad", "genero", "direccion", "cellphone", "email", "asignatura"]
     def crearUsuario(self):
         try:
             con,cur = connectDatabase()

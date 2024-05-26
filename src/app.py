@@ -7,12 +7,14 @@ from src.classess.Usuario import Usuario
 
 def gestionEstudiantes():
     dbSeeder()
-    login()
+    #login()
     #admin = Administrador("andres","123","pass","andres","24","Masculino","test","3015595423","andres.granda@gmail.com")
     #admin.crearUsuario()
     #estudiante = Estudiante("estudiante","1234","pass","andres","24","Masculino","test","3015595423","andres.granda@gmail.com")
+    
     #estudiante.crearUsuario()
-    #profesor = Profesor("profesor","1235","pass","andres","24","Masculino","test","3015595423","andres.granda@gmail.com")
+    profesor = Profesor("profesor","1235","pass","andres","24","Masculino","test","3015595423","andres.granda@gmail.com")
+    print(dir(profesor))
     #profesor.crearUsuario()
     
     

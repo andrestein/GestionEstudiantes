@@ -11,7 +11,8 @@ class Usuario:
         self.direccion = direccion
         self.cellphone = cellphone
         self.email = email
-
+    def __dir__(self):
+        return["userName", "id", "password", "nombre", "edad", "genero", "direccion", "cellphone", "email"]
     def crearUsuario(self):
         try:
             con,cur = connectDatabase()
@@ -43,6 +44,18 @@ class Usuario:
         except:
             print("Ups, ah ocurrido un error")
             return None
+    
+    def actualizarUsuario(self,atributo,valor):
+        try:
+            con,cur = connectDatabase()
+            cur.execute(f'''UPDATE Users
+                        SET {atributo}='{valor}'
+                        WHERE id='{self.id}';
+                        ''')
+            con.commit()
+            return "Se actualizo con exito"
+        except:
+            return "Ups, ah ocurrido un error"
 
 
 def checkUsuario(userName, password):
