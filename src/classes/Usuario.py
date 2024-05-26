@@ -25,6 +25,7 @@ class Usuario:
                 '{self.direccion}', '{self.cellphone}', '{self.email}', '{tipo}');
             ''')
             con.commit()
+            con.close()
             print("Se creo el usuario con exito")
         except:
             print("Ups, ah ocurrido un error")
@@ -40,6 +41,7 @@ class Usuario:
                     user["edad"],user["genero"],user["direccion"],
                     user["cellphone"],user["email"])
             con.commit()
+            con.close()
             return rowData
         except:
             print("Ups, ah ocurrido un error")
@@ -53,6 +55,7 @@ class Usuario:
                         WHERE id='{self.id}';
                         ''')
             con.commit()
+            con.close()
             return "Se actualizo con exito"
         except:
             return "Ups, ah ocurrido un error"
@@ -71,6 +74,7 @@ def checkUsuario(userName, password):
                 data["edad"],data["genero"],data["direccion"],
                 data["cellphone"],data["email"])
         con.commit()
+        con.close()
         return tipo,user
     except:
         print("Ups, ah ocurrido un error")
@@ -87,6 +91,7 @@ def consultarUsuario(id):
                 user["edad"],user["genero"],user["direccion"],
                 user["cellphone"],user["email"])
         con.commit()
+        con.close()
         return user
     except:
         print("Ups, ah ocurrido un error")
@@ -98,6 +103,7 @@ def eliminarUsuario(id):
         con,cur = connectDatabase()
         cur.execute(f'''delete from users where id='{id}';''')
         con.commit()
+        con.close()
         return "Se elimino con exito"
     except:
         print("Ups, ah ocurrido un error")
@@ -111,6 +117,7 @@ def actualizarUsuario(id,atributo,valor):
                     WHERE id='{id}';
                     ''')
         con.commit()
+        con.close()
         return "Se actualizo con exito"
     except:
         return "Ups, ah ocurrido un error"

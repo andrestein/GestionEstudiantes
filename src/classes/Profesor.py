@@ -1,18 +1,11 @@
-from src.classess.Usuario import Usuario
+from src.classes.Usuario import Usuario
 from src.util.db import connectDatabase
 
-class Estudiante(Usuario):
-    def __init__(self, userName, id, password, nombre, edad, genero, direccion, cellphone, email, asignatura=None):
-        super().__init__(userName, id, password, nombre, edad, genero, direccion, cellphone, email)
-        self.agregarAsignatura(asignatura)
-    def agregarAsignatura(self,value):
-        self._asignatura = value
-    def __dir__(self):
-        return["userName", "id", "password", "nombre", "edad", "genero", "direccion", "cellphone", "email", "asignatura"]
+class Profesor(Usuario):
     def crearUsuario(self):
         try:
             con,cur = connectDatabase()
-            tipo = "estudiante"
+            tipo = "profesor"
             cur.execute(f''' 
                 INSERT INTO Users
                 (id, password, userName, nombre, edad, genero, direccion, cellphone, email, tipo)
@@ -21,6 +14,7 @@ class Estudiante(Usuario):
                 '{self.direccion}', '{self.cellphone}', '{self.email}', '{tipo}');
             ''')
             con.commit()
+            con.close()
             print("Se creo el usuario con exito")
         except:
             print("Ups, ah ocurrido un error")

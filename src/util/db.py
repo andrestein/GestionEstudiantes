@@ -46,6 +46,7 @@ def dbSeeder():
             );
         ''')
     con.commit()
+    con.close()
     try:
         cur.execute(
             ''' 
@@ -53,5 +54,6 @@ def dbSeeder():
             ('123','pass','andres','andres','24','Masculino','test','3015595423','andres.granda@gmail.com','administrador')
             ''')
         con.commit()
+        con.close()
     except:
         print("Seeder update")

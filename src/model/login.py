@@ -1,10 +1,10 @@
-from src.classess.Profesor import Profesor
-from src.classess.Estudiante import Estudiante
-from src.classess.Administrador import Administrador
-from src.classess.Usuario import checkUsuario
+from src.classes.Profesor import Profesor
+from src.classes.Estudiante import Estudiante
+from src.classes.Administrador import Administrador
+from src.classes.Usuario import checkUsuario
 
 def login():
-    username="profesor"
+    username="andres"
     password = "pass"
     tipo, user = checkUsuario(username,password)
     currentUser = None
@@ -22,4 +22,4 @@ def login():
             user.direccion,user.cellphone,user.email)
     else:
         print("El usuario no existe")
-    print(currentUser)
+    return tipo,currentUser
